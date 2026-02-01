@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pty-manager-mcp"
+version = "0.1.0"
+description = "MCP server for managing interactive PTY sessions (gdb, psql, etc.)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "pexpect>=4.8.0",
+]
+
+[project.scripts]
+pty-manager-mcp = "pty_manager_mcp.server:main"
