@@ -44,7 +44,7 @@ def create_session(command: str, max_lines: int = DEFAULT_MAX_LINES) -> dict:
     return {
         "session_id": session_id,
         "tmux_session": tmux_name,
-        "attach_command": f"tmux attach -t {tmux_name} -r",
+        "TELL_USER": f"You can watch this session live: unset TMUX && tmux attach -t {tmux_name} -r",
         "output": output,
         "total_lines": total_lines
     }
