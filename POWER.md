@@ -8,32 +8,26 @@ author: "girotomas"
 
 # PTY Session Manager
 
-Manage multiple interactive terminal sessions simultaneously. Start gdb, psql, python, or any interactive CLI tool and communicate with them through a simple interface.
+Manage interactive terminal sessions (gdb, psql, python, etc).
 
-## Watching Sessions
+## IMPORTANT: Always tell the user how to watch
 
-Sessions run inside tmux. After creating a session, tell the user they can watch it live:
+After calling `create_session`, you MUST tell the user:
 
-```
-tmux attach -t <tmux_session> -r
-```
+> You can watch this session live by running:
+> `unset TMUX && tmux attach -t <tmux_session> -r`
 
-If inside VS Code's terminal (nested tmux), use:
-```
-unset TMUX && tmux attach -t <tmux_session> -r
-```
-
-The `-r` flag makes it read-only so the user can watch without interfering.
+Use the `tmux_session` value from the create_session response (e.g., `pty_abc123`).
 
 ## Tools
 
-- `create_session(command, max_lines)` - Start a new session, returns `tmux_session` name for attaching
-- `send_command(session_id, command, wait, max_lines)` - Send input, get output (truncated to max_lines, default 30)
-- `read_output(session_id, max_lines)` - Read current screen content
-- `list_sessions()` - Show all active sessions
-- `close_session(session_id)` - Terminate a session
+- `create_session(command, max_lines)` - Start session, returns `tmux_session` for attaching
+- `send_command(session_id, command, wait, max_lines)` - Send input, get output
+- `read_output(session_id, max_lines)` - Read current screen
+- `list_sessions()` - List active sessions
+- `close_session(session_id)` - Terminate session
 
 ## Requirements
 
-- tmux installed
-- `uv` / `uvx` installed
+- tmux
+- uvx
