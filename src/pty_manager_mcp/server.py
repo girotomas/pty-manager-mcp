@@ -58,7 +58,7 @@ def send_command(session_id: str, command: str, wait: float = 1.0, max_lines: in
     
     tmux_name = sessions[session_id]
     
-    code, _, err = run_tmux(["send-keys", "-t", tmux_name, command, "Enter"])
+    code, _, err = run_tmux(["send-keys", "-t", tmux_name, command, "C-m"])
     if code != 0:
         return {"error": f"Failed to send command: {err}"}
     
