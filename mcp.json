@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pty-manager": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/girotomas/pty-manager-mcp", "pty-manager-mcp"]
+    }
+  }
+}
