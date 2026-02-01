@@ -17,10 +17,11 @@ def run_tmux(args: list[str]) -> tuple[int, str, str]:
 
 
 def truncate_output(text: str, max_lines: int) -> tuple[str, int]:
-    lines = text.strip().split("\n")
+    text = text.replace("\r\n", "\n").replace("\r", "\n").strip()
+    lines = [l for l in text.split("\n") if l.strip()]
     total = len(lines)
     if total <= max_lines:
-        return text.strip(), total
+        return "\n".join(lines), total
     return "\n".join(lines[-max_lines:]), total
 
 
